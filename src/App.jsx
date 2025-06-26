@@ -1,7 +1,8 @@
 import "./App.css";
+import Jobcard from "./components/Jobcard";
 
 function App() {
-  return null;
+  return <Jobcard />;
 }
 
 export default App;
