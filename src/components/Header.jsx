@@ -1,4 +1,8 @@
-export default function Header() {
+export default function Header({ openModal }) {
+  function handleClick() {
+    openModal();
+  }
+
   return (
     <>
       <div>
@@ -7,13 +11,16 @@ export default function Header() {
         </h1>
       </div>
       <div className="flex flex-wrap gap-3 justify-center my-4">
-        <button className="bg-teal-500 text-white font-medium p-1 px-3 rounded-md">
+        <button
+          className="bg-teal-500 text-white font-medium p-1 px-3 rounded-md hover:bg-teal-600 cursor-pointer"
+          onClick={handleClick}
+        >
           + New Application
         </button>
-        <button className="border-1 border-teal-500 rounded-md p-1 px-3">
+        <button className="border-1 border-teal-500 rounded-md p-1 px-3 hover:bg-teal-500 hover:text-white cursor-pointer">
           Filter
         </button>
-        <button className="border-1 border-teal-500 rounded-md p-1 px-3">
+        <button className="border-1 border-teal-500 rounded-md p-1 px-3 hover:bg-teal-500 hover:text-white cursor-pointer">
           Sort
         </button>
       </div>

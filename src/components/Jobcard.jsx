@@ -9,12 +9,6 @@ export default function Jobcard() {
         </div>
         <h3>Contact info</h3>
         <h3>Status</h3>
-        <textarea
-          id="notes"
-          rows="4"
-          placeholder=" Add any notes here"
-          className="border my-2 w-full rounded-md border-gray-300 shadow-sm focus:border-teal-600 focus:ring-teal-600 sm:text-sm"
-        ></textarea>
         <div className="flex flex-wrap gap-3 justify-end">
           <button className="border-1 border-gray-300 rounded-md px-3">
             Edit
