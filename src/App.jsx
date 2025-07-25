@@ -7,6 +7,13 @@ import Modal from "./components/Modal";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    company: "",
+    position: "",
+    contact: "",
+    notes: "",
+    status: "",
+  });
 
   function openModal() {
     setIsModalOpen(true);
@@ -16,13 +23,15 @@ function App() {
     setIsModalOpen(false);
   }
 
+  console.log(formData);
+  
   return (
     <>
-      {isModalOpen && <Modal closeModal={closeModal} />}
+      {isModalOpen && <Modal setData={setFormData} formData={formData} closeModal={closeModal} />}
 
       <div className="min-h-screen mx-auto px-4 sm:px-6 md:px-10 bg-amber-50">
         <Header openModal={openModal} />
-        <Jobcard />
+        <Jobcard formData={formData} />
         <Footer />
       </div>
     </>

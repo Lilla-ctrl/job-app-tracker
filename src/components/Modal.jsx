@@ -1,6 +1,18 @@
-export default function Modal({ closeModal }) {
-  function handleClick() {
+export default function Modal({ closeModal, setData, formData }) {
+  function handleSubmit() {
     closeModal();
+  }
+
+  function handleChange(event) {
+    event.preventDefault();
+
+    let value = event.target.value;
+    let fieldName = event.target.name;
+
+    setData({
+      ...formData,
+      [fieldName]: value,
+    });
   }
 
   return (
@@ -13,6 +25,8 @@ export default function Modal({ closeModal }) {
                 Company
               </label>
               <input
+                value={formData.company}
+                onChange={handleChange}
                 type="text"
                 name="company"
                 id="company"
@@ -25,6 +39,8 @@ export default function Modal({ closeModal }) {
                 Position
               </label>
               <input
+                value={formData.position}
+                onChange={handleChange}
                 type="text"
                 name="position"
                 id="position"
@@ -32,23 +48,32 @@ export default function Modal({ closeModal }) {
 "
               />
             </div>
-            <label htmlFor="contact" className="text-gray-500 text-lg">
-              Contact info
-            </label>
-            <input
-              type="text"
-              name="contact"
-              id="contact"
-              className="shadow-inner p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-amber-400
+            <div className="space-y-4">
+              <label htmlFor="contact" className="text-gray-500 text-lg">
+                Contact info
+              </label>
+              <input
+                value={formData.contact}
+                onChange={handleChange}
+                type="text"
+                name="contact"
+                id="contact"
+                className="shadow-inner p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-amber-400
 "
-            />
+              />
+            </div>
             <textarea
+              value={formData.notes}
+              name="notes"
+              onChange={handleChange}
               id="notes"
               rows="4"
               placeholder=" Add any notes here"
               className="border mt-4 mb-2 w-full rounded-md border-gray-300 shadow-sm focus:border-teal-600 focus:ring-teal-600 sm:text-sm"
             ></textarea>
             <select
+              value={formData.status}
+              onChange={handleChange}
               name="status"
               id="status-select"
               className="shadow-inner p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-amber-400"
@@ -59,13 +84,15 @@ export default function Modal({ closeModal }) {
               <option value="rejected">Rejected</option>
             </select>
           </div>
+
+          <button
+            type="submit"
+            onSubmit={handleSubmit}
+            className="border-1 border-gray-300 rounded-md px-3 mt-5 hover:bg-gray-300 cursor-pointer"
+          >
+            Save
+          </button>
         </form>{" "}
-        <button
-          onClick={handleClick}
-          className="border-1 border-gray-300 rounded-md px-3 mt-5 hover:bg-gray-300 cursor-pointer"
-        >
-          Save
-        </button>
       </div>
     </div>
   );
