@@ -1,8 +1,31 @@
-export default function Modal({ closeModal, setData, formData, setJobData }) {
+export default function Modal({
+  closeModal,
+  setData,
+  formData,
+  setJobData,
+  jobData,
+  editingIndex,
+  setEditingIndex,
+}) {
   function handleSubmit(event) {
     event.preventDefault();
-    setJobData((prevData) => [...prevData, formData]);
-    setData({ company: "", position: "", contact: "", notes: "", status: "" });
+
+    if (editingIndex === null) {
+      setJobData((prevData) => [...prevData, formData]);
+      setEditingIndex(null);
+    } else {
+      let updatedJobs = [...jobData];
+      updatedJobs[editingIndex] = formData;
+      setJobData(updatedJobs);
+      setEditingIndex(null);
+    }
+    setData({
+      company: "",
+      position: "",
+      contact: "",
+      notes: "",
+      status: "",
+    });
     closeModal();
   }
 
@@ -14,6 +37,10 @@ export default function Modal({ closeModal, setData, formData, setJobData }) {
       ...formData,
       [fieldName]: value,
     });
+  }
+
+  function handleClose() {
+    closeModal();
   }
 
   return (
@@ -93,6 +120,12 @@ export default function Modal({ closeModal, setData, formData, setJobData }) {
             className="border-1 border-gray-300 rounded-md px-3 mt-5 hover:bg-gray-300 cursor-pointer"
           >
             Save
+          </button>
+          <button
+            onClick={handleClose}
+            className="border-1 border-gray-300 rounded-md px-3 mt-5 hover:bg-gray-300 cursor-pointer ml-2"
+          >
+            Cancel
           </button>
         </form>{" "}
       </div>

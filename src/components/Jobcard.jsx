@@ -1,4 +1,4 @@
-export default function Jobcard({ jobData }) {
+export default function Jobcard({ jobData, onEdit }) {
   if (jobData.length === 0) {
     return <p className="text-center text-2xl mt-6">No applications yet.</p>;
   }
@@ -18,7 +18,10 @@ export default function Jobcard({ jobData }) {
           <h3>{singleJob.contact}</h3>
           <h3>{singleJob.status}</h3>
           <div className="flex flex-wrap gap-3 justify-end">
-            <button className="border-1 border-gray-300 rounded-md px-3">
+            <button
+              onClick={() => onEdit(index)}
+              className="border-1 border-gray-300 rounded-md px-3"
+            >
               Edit
             </button>
             <button className="border-1 border-gray-300 rounded-md px-3">

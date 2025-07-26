@@ -15,6 +15,7 @@ function App() {
     status: "",
   });
   const [jobApplications, setJobApplications] = useState([]);
+  const [editingIndex, setEditingIndex] = useState(null);
 
   function openModal() {
     setIsModalOpen(true);
@@ -22,6 +23,13 @@ function App() {
 
   function closeModal() {
     setIsModalOpen(false);
+  }
+
+  function handleEdit(index) {
+    let jobToEdit = jobApplications[index];
+    setFormData(jobToEdit);
+    setEditingIndex(index);
+    openModal();
   }
 
   return (
@@ -32,12 +40,18 @@ function App() {
           setData={setFormData}
           formData={formData}
           closeModal={closeModal}
+          editingIndex={editingIndex}
+          setEditingIndex={setEditingIndex}
+          jobData={jobApplications}
         />
       )}
 
       <div className="min-h-screen mx-auto px-4 sm:px-6 md:px-10 bg-amber-50">
         <Header openModal={openModal} />
-        <Jobcard jobData={jobApplications} />
+        <Jobcard
+          jobData={jobApplications}
+          onEdit={handleEdit}
+        />
         <Footer />
       </div>
     </>
