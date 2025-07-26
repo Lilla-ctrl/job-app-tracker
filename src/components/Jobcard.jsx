@@ -1,4 +1,4 @@
-export default function Jobcard({ jobData, onEdit }) {
+export default function Jobcard({ jobData, onEdit, onDelete }) {
   if (jobData.length === 0) {
     return <p className="text-center text-2xl mt-6">No applications yet.</p>;
   }
@@ -24,7 +24,10 @@ export default function Jobcard({ jobData, onEdit }) {
             >
               Edit
             </button>
-            <button className="border-1 border-gray-300 rounded-md px-3">
+            <button
+              onClick={() => onDelete(index)}
+              className="border-1 border-gray-300 rounded-md px-3"
+            >
               Delete
             </button>
           </div>

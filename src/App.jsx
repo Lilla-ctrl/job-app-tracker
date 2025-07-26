@@ -32,6 +32,12 @@ function App() {
     openModal();
   }
 
+  function handleDelete(index) {
+    let filteredJobs = jobApplications.filter((_, i) => i !== index);
+
+    setJobApplications(filteredJobs);
+  }
+
   return (
     <>
       {isModalOpen && (
@@ -48,10 +54,7 @@ function App() {
 
       <div className="min-h-screen mx-auto px-4 sm:px-6 md:px-10 bg-amber-50">
         <Header openModal={openModal} />
-        <Jobcard
-          jobData={jobApplications}
-          onEdit={handleEdit}
-        />
+        <Jobcard jobData={jobApplications} onEdit={handleEdit} onDelete={handleDelete} />
         <Footer />
       </div>
     </>
