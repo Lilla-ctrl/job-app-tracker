@@ -7,8 +7,6 @@ export default function Modal({ closeModal, setData, formData, setJobData }) {
   }
 
   function handleChange(event) {
-    event.preventDefault();
-
     let value = event.target.value;
     let fieldName = event.target.name;
 
@@ -33,6 +31,7 @@ export default function Modal({ closeModal, setData, formData, setJobData }) {
                 type="text"
                 name="company"
                 id="company"
+                required
                 className="shadow-inner p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-amber-400
 "
               />
@@ -47,6 +46,7 @@ export default function Modal({ closeModal, setData, formData, setJobData }) {
                 type="text"
                 name="position"
                 id="position"
+                required
                 className="shadow-inner p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-amber-400
 "
               />

@@ -24,8 +24,6 @@ function App() {
     setIsModalOpen(false);
   }
 
-  console.log(formData);
-
   return (
     <>
       {isModalOpen && (
