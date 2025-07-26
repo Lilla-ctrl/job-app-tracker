@@ -1,5 +1,8 @@
-export default function Modal({ closeModal, setData, formData }) {
-  function handleSubmit() {
+export default function Modal({ closeModal, setData, formData, setJobData }) {
+  function handleSubmit(event) {
+    event.preventDefault();
+    setJobData((prevData) => [...prevData, formData]);
+    setData({ company: "", position: "", contact: "", notes: "", status: "" });
     closeModal();
   }
 
@@ -18,7 +21,7 @@ export default function Modal({ closeModal, setData, formData }) {
   return (
     <div className="bg-black/60 fixed inset-0 flex items-center justify-center min-h-screen ">
       <div className="bg-amber-50 p-6 rounded shadow-lg max-w-lg md:max-w-xl w-full ">
-        <form action="">
+        <form onSubmit={handleSubmit} action="">
           <div>
             <div className="space-y-4">
               <label htmlFor="company" className="text-gray-500 text-lg">
@@ -87,7 +90,6 @@ export default function Modal({ closeModal, setData, formData }) {
 
           <button
             type="submit"
-            onSubmit={handleSubmit}
             className="border-1 border-gray-300 rounded-md px-3 mt-5 hover:bg-gray-300 cursor-pointer"
           >
             Save
