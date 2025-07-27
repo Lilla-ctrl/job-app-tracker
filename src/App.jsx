@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -16,6 +16,23 @@ function App() {
   });
   const [jobApplications, setJobApplications] = useState([]);
   const [editingIndex, setEditingIndex] = useState(null);
+  const [hasLoadedFromStorage, setHasLoadedFromStorage] = useState(false);
+
+  useEffect(() => {
+    const storedJobs = localStorage.getItem("jobApplications");
+
+    if (storedJobs) {
+      setJobApplications(JSON.parse(storedJobs));
+    }
+
+    setHasLoadedFromStorage(true);
+  }, []);
+
+  useEffect(() => {
+    if (hasLoadedFromStorage) {
+      localStorage.setItem("jobApplications", JSON.stringify(jobApplications));
+    }
+  }, [jobApplications]);
 
   function openModal() {
     setIsModalOpen(true);
@@ -54,7 +71,11 @@ function App() {
 
       <div className="min-h-screen mx-auto px-4 sm:px-6 md:px-10 bg-amber-50">
         <Header openModal={openModal} />
-        <Jobcard jobData={jobApplications} onEdit={handleEdit} onDelete={handleDelete} />
+        <Jobcard
+          jobData={jobApplications}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+        />
         <Footer />
       </div>
     </>
