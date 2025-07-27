@@ -1,5 +1,5 @@
-export default function Jobcard({ jobData, onEdit, onDelete }) {
-  if (jobData.length === 0) {
+export default function Jobcard({ jobData, onEdit, onDelete, isLoaded }) {
+  if (isLoaded && jobData.length === 0) {
     return <p className="text-center text-2xl mt-6">No applications yet.</p>;
   }
 

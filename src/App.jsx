@@ -72,6 +72,7 @@ function App() {
       <div className="min-h-screen mx-auto px-4 sm:px-6 md:px-10 bg-amber-50">
         <Header openModal={openModal} />
         <Jobcard
+          isLoaded={hasLoadedFromStorage}
           jobData={jobApplications}
           onEdit={handleEdit}
           onDelete={handleDelete}
