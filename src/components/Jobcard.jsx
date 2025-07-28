@@ -13,11 +13,11 @@ export default function Jobcard({ jobData, onEdit, onDelete, isLoaded }) {
   }
 
   return (
-    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4 gap-6">
+    <div className="flex flex-wrap justify-center px-4 gap-6">
       {jobData.map((singleJob, index) => (
         <div
           key={index}
-          className="bg-gray-50 p-4 rounded-xl shadow-md border border-gray-300 flex flex-col justify-between"
+          className="w-[300px] bg-gray-50 p-4 rounded-xl shadow-md border border-gray-300 flex flex-col justify-between"
         >
           <h2 className="text-2xl mb-2">{singleJob.company}</h2>
           <div className="flex flex-wrap justify-between">
