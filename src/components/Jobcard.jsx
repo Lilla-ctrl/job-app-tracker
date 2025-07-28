@@ -1,4 +1,11 @@
 export default function Jobcard({ jobData, onEdit, onDelete, isLoaded }) {
+  const statusColors = {
+    Applied: "bg-blue-100 text-blue-800",
+    Interviewing: "bg-green-200 text-green-900",
+    "Offer received": "bg-yellow-100 text-yellow-800",
+    Rejected: "bg-red-100 text-red-800"
+  };
+
   if (isLoaded && jobData.length === 0) {
     return <p className="text-center text-2xl mt-6">No applications yet.</p>;
   }
@@ -16,7 +23,13 @@ export default function Jobcard({ jobData, onEdit, onDelete, isLoaded }) {
             <h3>{singleJob.date}</h3>
           </div>
           <h3>{singleJob.contact}</h3>
-          <h3>{singleJob.status}</h3>
+          <h3
+            className={`inline-block tracking-wide mt-2 px-3 py-1 rounded text-sm font-medium ${
+              statusColors[singleJob.status]
+            }`}
+          >
+            {singleJob.status}
+          </h3>
           <div className="flex flex-wrap gap-3 justify-end">
             <button
               onClick={() => onEdit(index)}

@@ -109,9 +109,10 @@ export default function Modal({
               className="shadow-inner p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-amber-400"
             >
               <option value="">Application status</option>
-              <option value="applied">Applied</option>
-              <option value="interviewing">Interviewing</option>
-              <option value="rejected">Rejected</option>
+              <option value="Applied">Applied</option>
+              <option value="Interviewing">Interviewing</option>
+              <option value="Offer received">Offer received</option>
+              <option value="Rejected">Rejected</option>
             </select>
           </div>
 
