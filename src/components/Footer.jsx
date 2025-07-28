@@ -3,6 +3,7 @@ export default function Footer() {
     <div className="text-center mt-5">
       <a
         href="https://github.com/Lilla-ctrl/job-app-tracker"
+        target="_blank"
         className="font-medium"
       >
         Coded
