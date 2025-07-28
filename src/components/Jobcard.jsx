@@ -1,9 +1,11 @@
+import { StickyNote } from "lucide-react";
+
 export default function Jobcard({ jobData, onEdit, onDelete, isLoaded }) {
   const statusColors = {
     Applied: "bg-blue-100 text-blue-800",
     Interviewing: "bg-green-200 text-green-900",
     "Offer received": "bg-yellow-100 text-yellow-800",
-    Rejected: "bg-red-100 text-red-800"
+    Rejected: "bg-red-100 text-red-800",
   };
 
   if (isLoaded && jobData.length === 0) {
@@ -23,6 +25,14 @@ export default function Jobcard({ jobData, onEdit, onDelete, isLoaded }) {
             <h3>{singleJob.date}</h3>
           </div>
           <h3>{singleJob.contact}</h3>
+          <p>
+            {singleJob.notes && (
+              <div className="flex items-start gap-2 mt-3 py-3 bg-yellow-50 border-1 border-yellow-400 text-md text-gray-700 rounded-md">
+                <StickyNote className="w-5 h-5 mt-1 ml-1 text-yellow-500" />
+                <p>{singleJob.notes}</p>
+              </div>
+            )}
+          </p>
           <h3
             className={`inline-block tracking-wide mt-2 px-3 py-1 rounded text-sm font-medium ${
               statusColors[singleJob.status]
