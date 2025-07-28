@@ -17,7 +17,7 @@ export default function Jobcard({ jobData, onEdit, onDelete, isLoaded }) {
       {jobData.map((singleJob, index) => (
         <div
           key={index}
-          className="bg-gray-50 p-4 rounded-xl shadow-md border border-gray-300"
+          className="bg-gray-50 p-4 rounded-xl shadow-md border border-gray-300 flex flex-col justify-between"
         >
           <h2 className="text-2xl mb-2">{singleJob.company}</h2>
           <div className="flex flex-wrap justify-between">
@@ -34,13 +34,13 @@ export default function Jobcard({ jobData, onEdit, onDelete, isLoaded }) {
             )}
           </p>
           <h3
-            className={`inline-block tracking-wide mt-2 px-3 py-1 rounded text-sm font-medium ${
+            className={`w-fit tracking-wide mt-2 px-3 py-1 rounded text-sm font-medium ${
               statusColors[singleJob.status]
             }`}
           >
             {singleJob.status}
           </h3>
-          <div className="flex flex-wrap gap-3 justify-end">
+          <div className="flex flex-wrap gap-3 justify-end mt-auto">
             <button
               onClick={() => onEdit(index)}
               className="border-1 border-gray-300 rounded-md px-3"
