@@ -56,7 +56,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className="h-screen flex flex-col bg-amber-50">
       {isModalOpen && (
         <Modal
           setJobData={setJobApplications}
@@ -69,17 +69,17 @@ function App() {
         />
       )}
 
-      <div className="min-h-screen mx-auto px-4 sm:px-6 md:px-10 bg-amber-50">
-        <Header openModal={openModal} />
+      <Header openModal={openModal} />
+      <main className="flex-1">
         <Jobcard
           isLoaded={hasLoadedFromStorage}
           jobData={jobApplications}
           onEdit={handleEdit}
           onDelete={handleDelete}
         />
-        <Footer />
-      </div>
-    </>
+      </main>
+      <Footer />
+    </div>
   );
 }
 
