@@ -56,7 +56,7 @@ function App() {
   }
 
   return (
-    <div className="h-screen flex flex-col bg-amber-50">
+    <div className="min-h-screen flex flex-col bg-amber-50">
       {isModalOpen && (
         <Modal
           setJobData={setJobApplications}
