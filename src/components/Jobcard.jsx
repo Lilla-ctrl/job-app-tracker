@@ -43,7 +43,7 @@ export default function Jobcard({ jobData, onEdit, onDelete, isLoaded }) {
           <div className="flex flex-wrap gap-3 justify-end mt-auto">
             <button
               onClick={() => onEdit(index)}
-              className="border-1 border-gray-300 rounded-md px-3"
+              className="border-1 border-gray-300 rounded-md px-3 py-1"
             >
               Edit
             </button>
