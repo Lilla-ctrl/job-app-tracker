@@ -99,14 +99,14 @@ export default function Modal({
               id="notes"
               rows="4"
               placeholder=" Add any notes here"
-              className="border mt-4 mb-2 w-full rounded-md border-gray-300 shadow-sm focus:border-teal-600 focus:ring-teal-600 sm:text-sm"
+              className="border mt-4 mb-2 w-full rounded-md border-gray-300 shadow-sm focus:border-teal-600 focus:ring-teal-600 sm:text-md"
             ></textarea>
             <select
               value={formData.status}
               onChange={handleChange}
               name="status"
               id="status-select"
-              className="shadow-inner p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-amber-400"
+              className="shadow-inner p-2 border border-gray-300 rounded-md w-full text-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-400"
             >
               <option value="">Application status</option>
               <option value="Applied">Applied</option>
@@ -118,13 +118,13 @@ export default function Modal({
 
           <button
             type="submit"
-            className="border-1 border-gray-300 rounded-md px-3 mt-5 hover:bg-gray-300 cursor-pointer"
+            className="border-1 border-gray-300 text-gray-500 rounded-md px-3 py-1 mt-5 hover:bg-gray-300 cursor-pointer"
           >
             Save
           </button>
           <button
             onClick={handleClose}
-            className="border-1 border-gray-300 rounded-md px-3 mt-5 hover:bg-gray-300 cursor-pointer ml-2"
+            className="border-1 border-gray-300 text-gray-500 rounded-md px-3 py-1 mt-5 hover:bg-gray-300 cursor-pointer ml-2"
           >
             Cancel
           </button>
