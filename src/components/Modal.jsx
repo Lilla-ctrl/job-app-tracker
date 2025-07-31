@@ -92,6 +92,14 @@ export default function Modal({
 "
               />
             </div>
+            <label htmlFor="date" className="text-gray-500 text-lg mr-2">Date of application</label>
+            <input
+              type="date"
+              id="date"
+              name="date"
+              value={formData.date}
+              onChange={(e) => setData({ ...formData, date: e.target.value })}
+            />
             <textarea
               value={formData.notes}
               name="notes"
