@@ -17,9 +17,18 @@ export default function Header({ openModal }) {
         >
           + New Application
         </button>
-        <button className="border-1 border-teal-500 rounded-md p-1 px-3 hover:bg-teal-500 hover:text-white cursor-pointer">
-          Filter
-        </button>
+        <select
+          className="border border-teal-500 rounded-md hover:bg-amber-50"
+          name="filter"
+          id="filter"
+        >
+          <option value="">Filter by status </option>
+          <option value="All">All (no filter)</option>
+          <option value="Applied">Applied</option>
+          <option value="Interviewing">Interviewing</option>
+          <option value="Offer received">Offer received</option>
+          <option value="Rejected">Rejected</option>
+        </select>
         <button className="border-1 border-teal-500 rounded-md p-1 px-3 hover:bg-teal-500 hover:text-white cursor-pointer">
           Sort
         </button>
