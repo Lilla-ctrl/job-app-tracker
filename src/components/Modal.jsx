@@ -40,6 +40,14 @@ export default function Modal({
   }
 
   function handleClose() {
+    setEditingIndex(null);
+    setData({
+      company: "",
+      position: "",
+      contact: "",
+      notes: "",
+      status: "",
+    });
     closeModal();
   }
 
@@ -92,7 +100,9 @@ export default function Modal({
 "
               />
             </div>
-            <label htmlFor="date" className="text-gray-500 text-lg mr-2">Date of application</label>
+            <label htmlFor="date" className="text-gray-500 text-lg mr-2">
+              Date of application
+            </label>
             <input
               type="date"
               id="date"
