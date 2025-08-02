@@ -1,10 +1,18 @@
-export default function Header({ openModal, setSelectedStatus }) {
+export default function Header({
+  openModal,
+  setSelectedStatus,
+  setSortOption,
+}) {
   function handleClick() {
     openModal();
   }
 
   function handleFilter(event) {
     setSelectedStatus(event.target.value);
+  }
+
+  function handleSort(event) {
+    setSortOption(event.target.value);
   }
 
   return (
@@ -34,9 +42,20 @@ export default function Header({ openModal, setSelectedStatus }) {
           <option value="Offer received">Offer received</option>
           <option value="Rejected">Rejected</option>
         </select>
-        <button className="border-1 border-teal-500 rounded-md p-1 px-3 hover:bg-teal-500 hover:text-white cursor-pointer">
-          Sort
-        </button>
+        <select
+          className="border border-teal-500 rounded-md hover:bg-amber-50"
+          name="sort"
+          id="sort"
+          onChange={handleSort}
+        >
+          <option value="">Sort by:</option>
+          <option value="date-newest">Date (newest)</option>
+          <option value="date-oldest">Date (oldest)</option>
+          <option value="company-az">Company (a-z)</option>
+          <option value="company-za">Company (z-a)</option>
+          <option value="position-az">Position (a-z)</option>
+          <option value="position-za">Position (z-a)</option>
+        </select>
       </div>
     </>
   );

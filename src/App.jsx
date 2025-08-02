@@ -18,6 +18,7 @@ function App() {
   const [editingIndex, setEditingIndex] = useState(null);
   const [hasLoadedFromStorage, setHasLoadedFromStorage] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("All");
+  const [sortOption, setSortOption] = useState("");
 
   useEffect(() => {
     const storedJobs = localStorage.getItem("jobApplications");
@@ -64,6 +65,28 @@ function App() {
             job.status.trim().toLowerCase() === selectedStatus.toLowerCase()
         );
 
+  let sortedJobs = [...filteredJobs];
+
+  switch (sortOption) {
+    case "date-newest":
+      sortedJobs.sort((a, b) => new Date(b.date) - new Date(a.date));
+      break;
+    case "date-oldest":
+      sortedJobs.sort((a, b) => new Date(a.date) - new Date(b.date));
+      break;
+    case "company-az":
+      sortedJobs.sort((a, b) => a.company.localeCompare(b.company));
+      break;
+    case "company-za":
+      sortedJobs.sort((a, b) => b.company.localeCompare(a.company));
+      break;
+    case "position-az":
+      sortedJobs.sort((a, b) => a.position.localeCompare(b.position));
+      break;
+    case "position-za":
+      sortedJobs.sort((a, b) => b.position.localeCompare(a.position));
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-amber-50">
       {isModalOpen && (
@@ -78,14 +101,19 @@ function App() {
         />
       )}
 
-      <Header openModal={openModal} setSelectedStatus={setSelectedStatus} />
+      <Header
+        openModal={openModal}
+        setSelectedStatus={setSelectedStatus}
+        setSortOption={setSortOption}
+      />
       <main className="flex-1">
         <Jobcard
           isLoaded={hasLoadedFromStorage}
-          jobData={filteredJobs}
+          jobData={sortedJobs}
           onEdit={handleEdit}
           onDelete={handleDelete}
           selectedStatus={selectedStatus}
+          sortOption={sortOption}
         />
       </main>
       <Footer />
