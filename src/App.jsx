@@ -17,6 +17,7 @@ function App() {
   const [jobApplications, setJobApplications] = useState([]);
   const [editingIndex, setEditingIndex] = useState(null);
   const [hasLoadedFromStorage, setHasLoadedFromStorage] = useState(false);
+  const [selectedStatus, setSelectedStatus] = useState("All");
 
   useEffect(() => {
     const storedJobs = localStorage.getItem("jobApplications");
@@ -55,6 +56,14 @@ function App() {
     setJobApplications(filteredJobs);
   }
 
+  const filteredJobs =
+    selectedStatus === "All"
+      ? jobApplications
+      : jobApplications.filter(
+          (job) =>
+            job.status.trim().toLowerCase() === selectedStatus.toLowerCase()
+        );
+
   return (
     <div className="min-h-screen flex flex-col bg-amber-50">
       {isModalOpen && (
@@ -69,13 +78,14 @@ function App() {
         />
       )}
 
-      <Header openModal={openModal} />
+      <Header openModal={openModal} setSelectedStatus={setSelectedStatus} />
       <main className="flex-1">
         <Jobcard
           isLoaded={hasLoadedFromStorage}
-          jobData={jobApplications}
+          jobData={filteredJobs}
           onEdit={handleEdit}
           onDelete={handleDelete}
+          selectedStatus={selectedStatus}
         />
       </main>
       <Footer />

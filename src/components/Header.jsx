@@ -1,6 +1,10 @@
-export default function Header({ openModal }) {
+export default function Header({ openModal, setSelectedStatus }) {
   function handleClick() {
     openModal();
+  }
+
+  function handleFilter(event) {
+    setSelectedStatus(event.target.value);
   }
 
   return (
@@ -21,6 +25,7 @@ export default function Header({ openModal }) {
           className="border border-teal-500 rounded-md hover:bg-amber-50"
           name="filter"
           id="filter"
+          onChange={handleFilter}
         >
           <option value="">Filter by status </option>
           <option value="All">All (no filter)</option>

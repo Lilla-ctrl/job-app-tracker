@@ -25,14 +25,14 @@ export default function Jobcard({ jobData, onEdit, onDelete, isLoaded }) {
             <h3>{singleJob.date}</h3>
           </div>
           <h3>{singleJob.contact}</h3>
-          <p>
+          <div>
             {singleJob.notes && (
               <div className="flex items-start gap-2 mt-3 py-1 bg-yellow-50 border-1 border-yellow-400 text-md text-gray-700 rounded-md">
                 <StickyNote className="w-5 h-5 mt-1 ml-1 text-yellow-500" />
                 <p className="whitespace-pre-line">{singleJob.notes}</p>
               </div>
             )}
-          </p>
+          </div>
           <h3
             className={`w-fit tracking-wide mt-2 px-3 py-1 rounded text-sm font-medium ${
               statusColors[singleJob.status]
