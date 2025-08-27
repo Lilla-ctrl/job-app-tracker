@@ -131,6 +131,7 @@ export default function Modal({
               <option value="Interviewing">Interviewing</option>
               <option value="Offer received">Offer received</option>
               <option value="Rejected">Rejected</option>
+              <option value="Unsolicited">Unsolicited</option>
             </select>
           </div>
 

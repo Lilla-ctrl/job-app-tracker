@@ -6,6 +6,7 @@ export default function Jobcard({ jobData, onEdit, onDelete, isLoaded }) {
     Interviewing: "bg-green-200 text-green-900",
     "Offer received": "bg-yellow-100 text-yellow-800",
     Rejected: "bg-red-100 text-red-800",
+    Unsolicited: "bg-gray-200 text-gray-600"
   };
 
   if (isLoaded && jobData.length === 0) {
