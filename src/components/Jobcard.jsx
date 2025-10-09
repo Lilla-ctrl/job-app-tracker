@@ -30,7 +30,7 @@ export default function Jobcard({ jobData, onEdit, onDelete, isLoaded }) {
             {singleJob.notes && (
               <div className="flex items-start gap-2 mt-3 py-1 bg-yellow-50 border-1 border-yellow-400 text-md text-gray-700 rounded-md">
                 <StickyNote className="w-5 h-5 mt-1 ml-1 text-yellow-500" />
-                <p className="whitespace-pre-line">{singleJob.notes}</p>
+                <p className="whitespace-pre-line [overflow-wrap:anywhere]">{singleJob.notes}</p>
               </div>
             )}
           </div>
